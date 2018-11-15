@@ -34,12 +34,17 @@ public class LoginServlet extends HttpServlet {
         if(users.login(req.getParameter("username"), req.getParameter("password")))
         {
             req.getSession().setAttribute("User", req.getParameter("username"));
-            if(req.getParameter("rememberMe") == "checked"){
+            if(req.getParameter("rememberMe") != null && req.getParameter("rememberMe").equals("on")){
                 Cookie user = new Cookie("username", req.getParameter("username"));
                 user.setMaxAge(60*60*24*30); // 1 month
                 resp.addCookie(user);
             }
-            resp.sendRedirect("index.jsp");
+            else{
+                Cookie user = new Cookie("username", null);
+                user.setMaxAge(-1);
+                resp.addCookie(user);
+            }
+            resp.sendRedirect("index");
         }
         else
         {

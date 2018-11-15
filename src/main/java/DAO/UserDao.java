@@ -18,7 +18,7 @@ public class UserDao {
     {
         for (User u: users
              ) {
-            if(u.getUsername() == username && u.getPassword() == password)
+            if(u.getUsername().equals(username) && u.getPassword().equals(password))
             {
                 return true;
             }

@@ -11,6 +11,7 @@
     <title>Index</title>
   </head>
   <body>
-    Welcome ${name}
+    Welcome ${User}
+    <p><a href="logout">Log Out!</a> </p>
   </body>
 </html>
